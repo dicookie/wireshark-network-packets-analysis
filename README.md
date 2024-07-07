@@ -4,7 +4,7 @@ Wireshark is a powerful network protocol analyzer that allows users to capture a
 
 Wireshark network packet analysis involves using Wireshark to capture, examine, and interpret network packets on a computer network. Analysts use Wireshark’s comprehensive tools to inspect packets and analyze network behaviors. It helps with diagnosing network performance issues, investigating security incidents, and ensuring compliance with network policies.
 
-![https://i.postimg.cc/25nmbBbR/0.jpg]
+![](https://i.postimg.cc/25nmbBbR/0.jpg)
 
 In this analysis, I will demonstrate how to analyze various network traffic using Wireshark. By examining packet captures, we will also identify and understand different types of network attacks. There are a total of 4 scenarios, each of which contains the process taken to analyze the packets, potential attack explanations, and security recommendations to mitigate such attacks.
 
@@ -18,23 +18,23 @@ In this capture file `example.pcap`, the objective is to analyze ARP requests an
 
 1. Apply the filter `arp && arp.opcode == 1 && arp.dst.proto_ipv4 == 192.168.1.221`. We find that the requestor’s MAC address is `Verizon_c2:69:24 (20:c0:47:c2:69:24)` and the IP address is `192.168.1.1`.
 
-    ![https://i.postimg.cc/501JwNLH/1.jpg]
+    ![](https://i.postimg.cc/501JwNLH/1.jpg)
 
 2. Apply the filter `arp && arp.opcode == 2 && arp.src.proto_ipv4 == 192.168.1.221`. We observe that there are 3 ARP reply packets.
 
-    ![https://i.postimg.cc/5yKMdBGv/2-1.jpg]
+    ![](https://i.postimg.cc/5yKMdBGv/2-1.jpg)
 
 3. We find that the first responder’s MAC address is `RaspberryPiF_64:8a:24 (b8:27:eb:64:8a:24)` and the IP address is `192.168.1.221`.
 
-    !https://i.postimg.cc/FRZ4G5VT/2-2.jpg]
+    ![](https://i.postimg.cc/FRZ4G5VT/2-2.jpg)
 
 4. Apply the filter `ip.dst == 192.168.1.221`. We identify that FTP was used for data transfer.
 
-    ![https://i.postimg.cc/TYSXtcnv/3.jpg]
+    ![](https://i.postimg.cc/TYSXtcnv/3.jpg)
 
 5. Apply the filter `ftp && ip.dst == 192.168.1.221`. We find that the username is `pikachu` and the password is `INeverLikedPokemon`.
 
-    ![https://i.postimg.cc/c1FWnWHH/4.jpg]
+    ![](https://i.postimg.cc/c1FWnWHH/4.jpg)
 
 ### Potential Attack Explanation
 
@@ -54,19 +54,19 @@ In the capture file `network_attack.pcap`, the goal is to review ARP packets and
 
 1. Apply the filter `arp`.
 
-    ![https://i.postimg.cc/cCLNb9D0/5.jpg]
+    ![](https://i.postimg.cc/cCLNb9D0/5.jpg)
 
 2. We observe that there are 3 packets: packet 1 is an ARP request, packet 2 is a legitimate ARP reply, and packet 3 is a forged ARP reply.
 
-    ![https://i.postimg.cc/zfYYrXdd/6-1.jpg]
+    ![](https://i.postimg.cc/TPrxdK2n/6-1.jpg)
 
 3. We find the legitimate device’s MAC address is `VMware_f9:f5:54 (00:50:56:f9:f5:54)` and IP address is `192.168.47.254`.
 
-    ![https://i.postimg.cc/CxqpXf4B/6-2.jpg]
+    ![](https://i.postimg.cc/qR4TzpgS/6-2.jpg)
 
 4. We also find that the hacker’s MAC address is `VMware_1d:b3:b1 (00:0c:29:1d:b3:b1)`.
 
-    ![https://i.postimg.cc/KY7SvSw-m/7.jpg]
+    ![](https://i.postimg.cc/KY7SvSw-m/7.jpg)
 
 ### Potential Attack Explanation
 
@@ -86,11 +86,11 @@ In the capture file `network_attack.pcap`, the goal is to identify and analyze a
 
 1. Apply the filter `dhcp`.
 
-    ![https://i.postimg.cc/FzBwn9dV/8-1.jpg]
+    ![](https://i.postimg.cc/FzBwn9dV/8-1.jpg)
 
 2. We find numerous DHCP Discover packets from `0.0.0.0` to `255.255.255.255`. `255.255.255.255` is a broadcast address to reach all devices, including DHCP servers.
 
-    ![https://i.postimg.cc/3RKMkfQm/8-2.jpg]
+    ![](https://i.postimg.cc/3RKMkfQm/8-2.jpg)
 
 ### Potential Attack Explanation
 
@@ -110,11 +110,11 @@ In the capture file `network_attack.pcap`, the goal is to identify and analyze a
 
 1. Apply the filter `tcp`.
 
-    ![https://i.postimg.cc/Wz3QnD34/9-1.jpg]
+    ![](https://i.postimg.cc/Wz3QnD34/9-1.jpg)
 
 2. We see a large amount of TCP SYN packets sent to a target IP address without completing the three-way handshake.
 
-    ![https://i.postimg.cc/nzTyBKn5/9-2.jpg]
+    ![](https://i.postimg.cc/nzTyBKn5/9-2.jpg)
 
 ### Potential Attack Explanation
 
