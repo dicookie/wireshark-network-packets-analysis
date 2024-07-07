@@ -6,7 +6,7 @@ Wireshark network packet analysis involves using Wireshark to capture, examine, 
 
 ![](https://i.postimg.cc/25nmbBbR/0.jpg)
 
-In this analysis, I will demonstrate how to analyze various network traffic using Wireshark. By examining packet captures, we will also identify and understand different types of network attacks. There are a total of 4 scenarios, each of which contains the process taken to analyze the packets, potential attack explanations, and security recommendations to mitigate such attacks.
+In this analysis, I will demonstrate how to analyze various network traffic using Wireshark. By examining packet captures, we will also identify and understand different types of network attacks. There are four scenarios, each of which contains the process taken to analyze the packets, attack insights, and security recommendationss to mitigate such attacks.
 
 ## Scenario 1: ARP & FTP Analysis
 
@@ -24,7 +24,7 @@ In this capture file `example.pcap`, the objective is to analyze ARP requests an
 
     ![](https://i.postimg.cc/5yKMdBGv/2-1.jpg)
 
-3. We find that the first responder’s MAC address is `RaspberryPiF_64:8a:24 (b8:27:eb:64:8a:24)` and the IP address is `192.168.1.221`.
+3. We find that the first responder’s MAC address is `b8:27:eb:64:8a:24` and the IP address is `192.168.1.221`.
 
     ![](https://i.postimg.cc/FRZ4G5VT/2-2.jpg)
 
@@ -36,11 +36,11 @@ In this capture file `example.pcap`, the objective is to analyze ARP requests an
 
     ![](https://i.postimg.cc/c1FWnWHH/4.jpg)
 
-### Potential Attack Explanation
+### Attack Insights
 
 One significant problem with FTP is that it transmits data in plain text without any encryption. That means any malicious actor who intercepts the network traffic can read, modify, or steal sensitive information. This can lead to data breaches, identity theft, and other malicious attacks.
 
-### Security Recommendation
+### Security Recommendations
 
 To mitigate these risks, always opt for a secure version of FTP. FTPS (FTP Secure) or SFTP (SSH File Transfer Protocol) both provide encryption and authentication mechanisms, making them far more secure than standard FTP. Additionally, consider using file transfer solutions or web applications integrated with enhanced security measures such as multi-factor authentication and file integrity validation. One thing to remember is to avoid using FTP over public or untrusted networks to protect your data.
 
@@ -60,19 +60,19 @@ In the capture file `network_attack.pcap`, the goal is to review ARP packets and
 
     ![](https://i.postimg.cc/TPrxdK2n/6-1.jpg)
 
-3. We find the legitimate device’s MAC address is `VMware_f9:f5:54 (00:50:56:f9:f5:54)` and IP address is `192.168.47.254`.
+3. We find the legitimate device’s MAC address is `00:50:56:f9:f5:54` and IP address is `192.168.47.254`.
 
     ![](https://i.postimg.cc/qR4TzpgS/6-2.jpg)
 
-4. We also find that the hacker’s MAC address is `VMware_1d:b3:b1 (00:0c:29:1d:b3:b1)`.
+4. We also find that the hacker’s MAC address is `00:0c:29:1d:b3:b1`.
 
     ![](https://i.postimg.cc/KY7SvSw-m/7.jpg)
 
-### Potential Attack Explanation
+### Attack Insights
 
 ARP (Address Resolution Protocol) spoofing, also known as ARP poisoning, is a type of attack where an attacker sends forged ARP messages over a LAN. This results in the linking of the attacker’s MAC address with the IP address of a legitimate computer or server on the network. Once done, the attacker can intercept, modify, or stop data intended for that IP address. This can lead to data theft, DoS, session hijacking, and other attacks.
 
-### Security Recommendation
+### Security Recommendations
 
 To mitigate the risks of ARP spoofing, consider implementing DAI (Dynamic ARP Inspection) on network switches, using static ARP entries where feasible, employing ARP spoofing detection tools, and monitoring network traffic for unusual ARP activity. These methods can help identify and prevent such attacks.
 
@@ -92,11 +92,11 @@ In the capture file `network_attack.pcap`, the goal is to identify and analyze a
 
     ![](https://i.postimg.cc/3RKMkfQm/8-2.jpg)
 
-### Potential Attack Explanation
+### Attack Insights
 
 A Dynamic Host Configuration Protocol Server is responsible for issuing IP addresses to devices on its network. This is done through a series of packet exchanges between individual DHCP clients and DHCP servers (DISCOVER, OFFER, REQUEST, ACKNOWLEDGEMENT). In a DHCP starvation attack, the malicious actor sends numerous DISCOVER packets until the IP address pool of a DHCP server is exhausted. This prevents legitimate users from getting IP addresses, causing Denial of Service, network disruption, and other harms.
 
-### Security Recommendations
+### Security Recommendationss
 
 To prevent DHCP starvation attacks, implement DHCP snooping on network switches to filter out DHCP traffic from untrusted sources and ensure only trusted ports can send DHCP requests. For critical devices, use static IP addresses to reduce reliance on DHCP and ensure network connectivity during an attack. Also, regularly monitor network traffic and use IDS to detect and alert on potential DHCP traffic.
 
@@ -116,14 +116,14 @@ In the capture file `network_attack.pcap`, the goal is to identify and analyze a
 
     ![](https://i.postimg.cc/nzTyBKn5/9-2.jpg)
 
-### Potential Attack Explanation
+### Attack Insights
 
 After reviewing the packets, we identify this as a potential TCP SYN flood attack. The TCP SYN flood is where the attacker exploits the TCP three-way handshake process by sending numerous TCP SYN packets to a target server to overwhelm it. The attacker does not complete the handshake, which leaves the server with numerous half-open connections. This attack can lead to resource exhaustion, DoS, and network congestion.
 
-### Security Recommendations
+### Security Recommendationss
 
 Implement SYN flood protection mechanisms such as SYN cookies, rate limiting, IPS, and firewall rules to mitigate the impact of SYN flood attacks. Also, increasing the size of the backlog queue to handle more half-open connections will reduce the likelihood of resource depletion.
 
 ## Conclusion
 
-In this analysis, we looked at various network traffic patterns and attacks using Wireshark. Packet captures provide us with methods to identify and analyze attacks, potential harms, and effective security recommendations to mitigate them. These are crucial steps to protect network infrastructure and maintain the confidentiality, integrity, and availability of network services.
+In this analysis, we looked at various network traffic patterns and attacks using Wireshark. Packet captures provide us with methods to identify and analyze attacks, potential harms, and effective Security Recommendationss to mitigate them. These are crucial steps to protect network infrastructure and maintain the confidentiality, integrity, and availability of network services.
