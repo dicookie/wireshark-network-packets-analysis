@@ -1,4 +1,4 @@
-# wireshark Network Packets Analysis
+# Wireshark Network Packets Analysis
 
 Wireshark is a powerful network protocol analyzer that allows users to capture and interactively browse the traffic running on a computer network. It enables deep inspection of hundreds of protocols. Wireshark provides detailed packet information, making it valuable for network analysis and security auditing tasks. It is a critical tool for network administrators and security professionals.
 
